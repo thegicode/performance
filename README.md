@@ -1,4 +1,5 @@
 # performance
+[w3.org](https://www.w3.org/TR/navigation-timing/#sec-window.performance-attribute)
 
 ## window.performance.navigation.type
 | 상수 | 값 | 설명 |
