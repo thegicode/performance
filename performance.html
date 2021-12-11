@@ -19,27 +19,36 @@
         // TYPE_BACK_FORWARD: 2
         // TYPE_RESERVED: 255
 
-        console.log(' ')
+        onLoad()
 
         // 페이지 로딩 시간 구하기
         function onLoad() {
             let now = new Date().getTime()
             let pageLoadTime = now - window.performance.timing.navigationStart
-            console.log(`User-perceived page loading time: ${pageLoadTime}`)
-
+            console.log(`\n\n 1. User-perceived page loading time: ${pageLoadTime}`)
         }
-        onLoad()
+       
 
 
-        /* console 창에 입력
-        const perfData = window.performance.timing
-        // navigatinStart, loadEventEnd 속성을 사용하여 페이지 전체 로드 시간 구하기
-        pageLoadTime = perfData.loadEventEnd - perfData.navigationStart
-        console.log(`pageLoadTime: ${pageLoadTime}ms`)
-        // requestStart, responseEnd 속성을 사용하여 HTTP 요청에서 응답까지 걸린 시간 구하기
-        let connectTime = perfData.responseEnd - perfData.requestStart
-        console.log(`connectTime: ${connectTime}ms`)
-        */
+        setTimeout( () => {
+            performance2()
+        }, 2000)
+        function performance2() {
+            const { loadEventEnd,  navigationStart, responseEnd, requestStart } = window.performance.timing
+            // navigatinStart, loadEventEnd 속성을 사용하여 페이지 전체 로드 시간 구하기
+            pageLoadTime = loadEventEnd - navigationStart
+            console.log(`\n\n2-1. pageLoadTime: ${pageLoadTime}ms`)
+            console.log('   loadEventEnd: ', loadEventEnd)
+            console.log('   navigationStart: ', navigationStart)
+            
+            // requestStart, responseEnd 속성을 사용하여 HTTP 요청에서 응답까지 걸린 시간 구하기
+            let connectTime = responseEnd - requestStart
+            console.log(`2-2. connectTime: ${connectTime}ms`)
+            console.log('   responseEnd: ', responseEnd)
+            console.log('   requestStart: ', requestStart)
+        }
+
+        
         
     </script>
 </body>
