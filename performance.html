@@ -36,13 +36,13 @@
         function performance2() {
             const { loadEventEnd,  navigationStart, responseEnd, requestStart } = window.performance.timing
             // navigatinStart, loadEventEnd 속성을 사용하여 페이지 전체 로드 시간 구하기
-            pageLoadTime = loadEventEnd - navigationStart
+            const pageLoadTime = loadEventEnd - navigationStart
             console.log(`\n\n2-1. pageLoadTime: ${pageLoadTime}ms`)
             console.log('   loadEventEnd: ', loadEventEnd)
             console.log('   navigationStart: ', navigationStart)
             
             // requestStart, responseEnd 속성을 사용하여 HTTP 요청에서 응답까지 걸린 시간 구하기
-            let connectTime = responseEnd - requestStart
+            const connectTime = responseEnd - requestStart
             console.log(`2-2. connectTime: ${connectTime}ms`)
             console.log('   responseEnd: ', responseEnd)
             console.log('   requestStart: ', requestStart)
