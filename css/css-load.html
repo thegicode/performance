@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 최적화하기 | Performance</title>
+
+    <!-- CSS for above the fold -->
+    <link rel="stylesheet" media="all" type="text/css" href="gridpak.css">
+
+    <!-- CSS for below the fold -->
+    <link rel="stylesheet" type="text/css" defer-ref="defer1.css" >
+    <link rel="stylesheet" type="text/css" defer-ref="defer2.css" >
+
+</head>
+<body>
+    <h1>CSS 최적화하기</h1>
+    <script>
+        // onload시 below the fold CSS를 다운로드한다.
+        function deferOnload() {
+            var style = document.getElementsByTagName('link')
+            for (var i=0 ; i<style.length ; i++) {
+                var a = style[i].getAttribute('defer-ref')
+                if(a) style[i].href = a
+            }
+        }
+
+        // onLoad 이벤트를 등록한다.
+        if (window.addEventListener)
+            window.addEventListener("load", deferOnload, false)
+        else if (window.attachEvent)
+            window.attachEvent("onload", deferOnload)
+        else window.onload = deferOnload
+
+    </script>
+</body> 
+</html>
