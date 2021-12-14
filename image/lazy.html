@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 지연 로딩 | Performance</title>
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
+    <script>
+        function loadReal(img) {
+            if (img.display != 'none') {
+                img.onload = null;
+                img.src = img.getAttribute('data-src');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>이미지 지연 로딩</h1>
+    
+    <img src="../assets/1px.png" data-src="../assets/pic-normal.png" alt="A normal" onload="loadReal(this)">
+    <img src="../assets/1px.png" data-src="../assets/pic-retina.png" alt="A retina" onload="loadReal(this)">
+    <img src="../assets/1px.png" data-src="../assets/200w.png" alt="A 200w" onload="loadReal(this)">
+    <img src="../assets/1px.png" data-src="../assets/300w.png" alt="A 300w" onload="loadReal(this)">
+    <img src="../assets/1px.png" data-src="../assets/400w.png" alt="A 400w" onload="loadReal(this)">
+    <img src="../assets/1px.png" data-src="../assets/500w.png" alt="A 500w" onload="loadReal(this)">
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 지연 로딩 | Performance</title>
+    <style>
+        img {
+            width: 100%;
+            max-width: 300px;
+        }
+    </style>
+    
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazyloadjs/3.2.2/lazyload.min.js" 
+        integrity="sha512-3WLY2nDlx1c6leUk3gyqneF+bWq4Ub/HsGjmJoo7qRlMFMXcOwzw6gqf+PwKLzd/TUjWlpSaHBy6L6o1hS2y9g==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"></script>
+    <!-- https://github.com/vvo/lazyload -->
+    
+
+    <h1>이미지 지연 로딩</h1>
+    <img
+      data-src="../assets/pic-normal.png"
+      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+      onload="lzld(this)">
+   
+
+</body>
+</html>
