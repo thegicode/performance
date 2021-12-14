@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>picture | Performance</title>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .div {
+            width: 250px;
+            height: 250px;
+            background-color: green;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2rem;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- <div class="div">500px</div> -->
+    <h3>pictrue element</h3>
+    <p>내려받아 숨기기와 내려받아 줄이기 문제를 모두 해결</p>
+    <picture>
+        <source media="(min-width: 500px)" srcset="../assets/400w.png, ../assets/500w.png 2x">
+        <source media="(min-width: 400px)" srcset="../assets/300w.png, ../assets/400w.png 2x">
+        <source srcset="../assets/200w.png, ../assets/300w.png 2x">
+        <img src="../assets/200w.png" alt="rwd">
+    </picture>
+
+    <!-- <form action="">
+        <input type="text" required="" pattern="[0-9]{10}" value="" title="This is an error message" />
+        <button>ghk</button>
+    </form> -->
+
+    <form id="myform">
+        <input type="text" pattern="[0-9]{10}" oninvalid="InvalidMsg(this);" name="email" oninput="InvalidMsg(this);"  />
+        <input type="submit" />
+    </form>
+
+    <script>
+       function InvalidMsg(textbox) {
+            if(textbox.validity.patternMismatch){
+                textbox.setCustomValidity('');
+            }    
+            else {
+                textbox.setCustomValidity('');
+            }
+            return true;
+        }
+
+        document.querySelector('#myform')
+            .addEventListener('submit', (e) => {
+                e.preventDefault()
+                document.querySelector('input').setCustomValidity('');
+            })
+    </script>
+    
+</body>
+</html>

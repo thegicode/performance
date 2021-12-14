@@ -7,34 +7,12 @@
     <style>
         body {
             background-color: rgba(0, 0, 0, 0.7);
-
         }
-        /* @media (min-width: 320px) {
-            body {
-                background-color: green;
-            }
-        }
-        @media (min-width: 480px) {
-            body {
-                background-color: blue;
-            }
-        }
-        @media (min-width: 600px) {
-            body {
-                background-color: #614a00;
-            }
-        } */
-
-       
 
         .img1 {
             width: 300px;
             height: 300px;
             border: solid 1px black;
-        }
-
-        img {
-            /* width: 100%; */
         }
 
         .div {
@@ -59,17 +37,17 @@
     <h4>1x, 2x : 이미지 화소 밀도</h4>
     <p>2x : Retina display</p>
     <img src="assets/pic-normal.png" alt="샘플"
-        srcset="assets/pic-normal.png 1x,
-                assets/pic-retina.png 2x"
+        srcset="../assets/pic-normal.png 1x,
+                ../assets/pic-retina.png 2x"
         class="img1">
     <br>
 
 
     <h4>Size 속성</h4>
-    <img src="assets/320w.png" alt="샘플"
-        srcset="assets/200w.png 200w,
-                assets/300w.png 300w,
-                assets/400w.png 400w"
+    <img src="../assets/320w.png" alt="샘플"
+        srcset="../assets/200w.png 200w,
+                ../assets/300w.png 300w,
+                ../assets/400w.png 400w"
         sizes="(max-width: 400px) 100vw,
             (max-width: 800px) 30vw, 300px">
     
