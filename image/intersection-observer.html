@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intersection Observer | Performance</title>
+    <style> 
+        img {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="root" class="root">
+        <h1>Intersection Observer</h1>
+        <img src="../assets/01.png">
+        <img src="../assets/02.png">
+        <img src="../assets/03.png">
+        <img data-src="../assets/04.png">
+        <img data-src="../assets/05.png">
+        <img data-src="../assets/06.png">
+        <img data-src="../assets/07.png">
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const lazyImages = document.querySelectorAll('[data-src]')
+            const imageObserver = new IntersectionObserver( (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        let image = entry.target;
+                        image.src = image.dataset.src;
+                        delete image.dataset.src
+                        imageObserver.unobserve(image);
+                    }
+                })
+            })
+            lazyImages.forEach(img => {
+                imageObserver.observe(img);
+            })
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTMLImageElement Loading | Performance</title>
+<style> 
+    img { display: block; margin: 1em 0; }
+    pre { border: 2px solid red; }
+</style>
+
+<h1>HTMLImageElement Loading</h1>
+<pre><code>'loading' in HTMLImageElement.prototype === <span>false</span></code></pre>
+<script>
+    const hasSupport = 'loading' in HTMLImageElement.prototype;
+    document.querySelector('span').textContent = hasSupport;
+</script>
+
+<img loading='lazy' src='../assets/01.png' width='400' height='300' alt=''>
+<img loading='lazy' src='../assets/02.png' width='400' height='300' alt=''>
+<img loading='lazy' src='../assets/03.png' width='400' height='300' alt=''>
+<img loading='lazy' src='../assets/04.png' width='400' height='300' alt=''>
+<img loading='lazy' src='../assets/05.png' width='400' height='300' alt=''>
+<img loading='lazy' src='../assets/06.png' width='400' height='300' alt=''>
+<img loading='lazy' src='../assets/07.png' width='400' height='300' alt=''>
+<img loading='lazy' src='../assets/200w.png' width='200' height='200' alt=''>
+<img loading='lazy' src='../assets/300w.png' width='300' height='300' alt=''>
+
