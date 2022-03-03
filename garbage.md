@@ -9,8 +9,8 @@
 
 문제가 무엇인지 파악했으면 할당 타임라인 기록을 사용하여 메모리가 어디에 할당되는지, 어느 함수가 할당을 초래하는지 알아낼 수 있다.
 
-- [garbage-1](./html/gargage-1.html)
-- [garbage-2](./html/gargage-2.html)
+- [garbage-1](https://thegicode.github.io/performance/html/garbage-1.html)
+- [garbage-2](https://thegicode.github.io/performance/html/garbage-2.html)
 
 
 출처: https://12bme.tistory.com/349?category=785013 
