@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>타임라인 기록으로 메모리 누수 시각화</title>
+    <style>
+        
+        body {
+            display: flex;
+            justify-content: center;
+            margin-top: 10rem;
+
+        }
+        div {
+        }
+
+    </style>
+</head>
+<body>
+
+    <button id="grow">Collect Garbage</button>
+    <div id="log"></div>
+
+
+    <script>
+        var x = [];
+
+        function grow() {
+            console.log('grow')
+            for (var i = 0; i < 10000; i++) {
+                document.body.appendChild(document.createElement('div'));
+            }
+            x.push(new Array(1000000).join('x'));
+            // document.querySelector('#log').textContent = x
+
+
+        }
+
+        document.getElementById('grow').addEventListener('click', grow)
+
+/*
+        JS HEEP의 숫자 
+        활성 숫자는 페이지의 연결 가능한 객체들이 사용하고 있는 메모리의 양을 나타냅니다. 
+        이 숫자가 늘어나고 있다면, 새 객체가 생성되고 있는 것이거나 기존 객체가 성장하고 있는 것입니다.
+    
+
+        // test 설명
+
+        Nodes
+        노드 카운터(녹색 그래프)를 보면 이것이 노드와 깔끔하게 일치한다는 사실을 확인할 수 있습니다. 
+        노드 카운트는 불연속적인 단계에서 증가합니다. 
+        각 노드 카운트 증가를 grow() 호출로 간주할 수 있습니다.
+
+    
+        JS HEEP
+        첫번째 하강부분은 사실 collect garbage 버튼을 누르면 실행되는 강제 가비지 수집입니다. 
+        기록이 진행될수록 JS 힙 크기가 갑자기 치솟는 것을 확인할 수 있습니다. 이는 당연하고 예상할 수 있는 현상입니다.
+        자바스크립트가 버튼을 누를때마다 DOM 노드를 생성하고 수 백만개의 문자로 구성된 문자열을 생성할 때 대량의 작업을 수행하기 때문입니다.
+        여기서 중요한 것은 JS 힙이 처음에 시작했을 때보다 높은 곳에서 끝난다는 사실입니다(여기서 '시작'은 강제 가비지 수집 이후 시점). 
+        실제로는 JS 힙 크기 또는 노드 크기가 이렇게 증가하는 패턴이 나타나면 메모리 누수를 의미할 가능성이 있습니다.
+
+
+*/
+
+        // 출처: https://12bme.tistory.com/349?category=785013 [길은 가면, 뒤에 있다.]
+
+
+    </script>
+    
+</body>
+</html>
+

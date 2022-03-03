@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>힙 스냅샷으로 분리된 DOM 트리 메모리 누수 발견</title>
+    <style>
+        
+        body {
+            display: flex;
+            justify-content: center;
+            margin-top: 10rem;
+
+        }
+        div {
+        }
+
+    </style>
+</head>
+<body>
+
+    <button id="create">Create</button>
+
+    <script>
+
+        /*
+            DOM 노드를 가비지 수집할 수 있는 경우는 페이지의 DOM 트리 또는 자바스크립트 코드 중 어느쪽에서도 이에 대한 참조가 없을 때 뿐입니다. 
+            노드를 '분리되었다'고 말하는 것은 노드가 DOM 트리에서 제거되었지만 몇몇 자바스크립트에서 여전히 해당 노드를 참조하는 경우를 의미합니다. 
+            분리된 DOM 노드는 메모리 누수를 초래하는 일반적인 원인입니다. 아래는 DevTools의 힙 프로파일러를 사용하여 분리된 노드를 파악하는 방법 입니다.
+        */
+
+        var detachedNodes; 
+        function create() { 
+            console.log('create')
+            var ul = document.createElement('ul'); 
+            for (var i = 0; i < 10; i++) { 
+                var li = document.createElement('li'); 
+                ul.appendChild(li); 
+            } 
+            detachedTree = ul; 
+        } 
+
+        document.getElementById('create').addEventListener('click', create);
+
+        /*
+            코드에서 참조된 버튼을 클릭하면 10개의 li 자식 노드가 있는 ul 노드가 생성됩니다. 
+            이들 노드는 코드에서는 참조되지만 DOM 트리에는 존재하지 않으므로 분리되었다고 할 수 있습니다.
+            힙 스냅샷은 분리된 노드를 식별하는 한가지 방법입니다. 
+            힙 스냅샷은 이름에서 알 수 있듯이, 스냅샷 시점에 페이지의 JS 객체와 DOM 노드에서 메모리가 어떻게 분포되어 있는지 보여줍니다.
+
+
+            memory / Heal sneapshot / class filter 상자에 detached 입력하여 분리된 DOM 트리를 검색
+        */
+
+
+
+    </script>
+    
+</body>
+</html>
+

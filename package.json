@@ -1,7 +1,7 @@
 {
   "name": "performance",
   "version": "1.0.0",
-  "description": "## 웹성능 예산 ### 정량 기반 지표 - 이미지 파일의 최대 크기 - 최대 웹 폰트 파일 개수 - 자바스크립트 파일 크기 합 - 타사 스크립트 개수 합",
+  "description": "웹 성능 확인",
   "main": "index.js",
   "scripts": {
     "start": "node server",
